@@ -1,5 +1,14 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
+import Rating from './Rating'
+
+const numberFormat = (value) =>
+  new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  })
+    .format(value)
+    .replace(/(\.|,)00$/g, '')
 
 const Product = ({ product }) => {
   return (
@@ -15,11 +24,12 @@ const Product = ({ product }) => {
         </a>
       </Card.Body>
       <Card.Text as='div'>
-        <div className='my-3'>
-          {product.rating} from {product.numReviews} reviews
-        </div>
+        <Rating
+          stars={product.rating}
+          reviews={`${product.numReviews} reviews`}
+        ></Rating>
       </Card.Text>
-      <Card.Text as='h3'>Rp{product.price}</Card.Text>
+      <Card.Text as='h4'>{numberFormat(product.price)}</Card.Text>
     </Card>
   )
 }
