@@ -2,14 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Rating from './Rating'
-
-const numberFormat = (value) =>
-  new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-  })
-    .format(value)
-    .replace(/(\.|,)00$/g, '')
+import { numberFormat } from '../helper'
 
 const Product = ({ product }) => {
   return (
